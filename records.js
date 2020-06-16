@@ -39,8 +39,7 @@ function getQuotes(){
  */
 async function getQuote(id){
   const quotes = await getQuotes();
-  return quotes.records.find(
-    record => record.id == id);
+  return quotes.records.find(record => record.id == id);
 }
 /**
  * Gets a random quote 
@@ -48,13 +47,14 @@ async function getQuote(id){
  */
 async function getRandomQuote(){
   const quotes = await getQuotes();
+  console.log(quotes.records.length)
   const randNum = Math.floor(Math.random() * quotes.records.length);
   return quotes.records[randNum];
 }
 
 /**
  * Creates a new quote record 
- * @param {Object} newRecord - Object containing info for new quote: the quote text, author and year 
+ * @param {Object} newRecord - Object containing info for new quote: the quote text and author 
  */
 async function createQuote(newRecord) {
   const quotes = await getQuotes(); 
@@ -67,7 +67,7 @@ async function createQuote(newRecord) {
 
 /**
  * Updates a single record 
- * @param {Object} newQuote - An object containing the changes to quote: quote, author, year (all optional)
+ * @param {Object} newQuote - An object containing the changes to quote: quote and author 
  */
 async function updateQuote(newQuote){
   const quotes = await getQuotes();
